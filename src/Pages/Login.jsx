@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({setauthenticated}) => {
    const[input,setinput] = useState({
     email:"",
     password:"",
@@ -24,20 +24,23 @@ const Login = () => {
 
         try {
             // Replace with your backend login endpoint
-            const response = await axios.post('http://localhost:8085/auth/register', input,{
+            const response = await axios.post('http://localhost:8085/auth/login', input,{
               headers:{
                 "Content-Type":"application/json"
               },withCredentials:true
             });
             
-            if (response.status === 200) {
+            if (response.status === 200 && response.data.token) {
                 // Save tokens in localStorage (or wherever you want)
-               navigate("/")
+                localStorage.setItem("token",response.data.token);
+                console.log(response.data)
+                setauthenticated(true)
+               navigate("/adddoctor")
 
             }
                
         } catch (error) {
-            setError('Invalid credentials or an error occurred.');
+            console.log('Invalid credentials or an error occurred.');
             console.error(error);
         } finally {
             setIsLoading(false);
