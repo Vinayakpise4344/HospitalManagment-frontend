@@ -24,7 +24,7 @@ const Login = ({setauthenticated}) => {
 
         try {
             // Replace with your backend login endpoint
-            const response = await axios.post('https://hospitalmanagementserver-3430.onrender.com/auth/login', input,{
+            const response = await axios.post('https://hospitalmanagementserver-3430.onrender.com/api/auth/login', input,{
               headers:{
                 "Content-Type":"application/json"
               },withCredentials:true

@@ -30,7 +30,7 @@ const Signup = () => {
     e.preventDefault();
     try{
 
-      const response =await axios.post("https://hospitalmanagementserver-3430.onrender.com/auth/register",input,{
+      const response =await axios.post("hhttps://hospitalmanagementserver-3430.onrender.com/api/auth/register",input,{
         headers:{
           'Content-Type':'application/json'
         },

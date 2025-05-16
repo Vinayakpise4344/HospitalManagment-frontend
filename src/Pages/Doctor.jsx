@@ -9,7 +9,7 @@ const Doctor = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get("https://hospitalmanagementserver-3430.onrender.com/getDoctors");
+        const response = await axios.get("https://hospitalmanagementserver-3430.onrender.com/api/getDoctors");
         setData(response.data);
         setLoading(false);
       } catch (error) {
